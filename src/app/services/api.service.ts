@@ -8,6 +8,6 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   post(endpoint: string, body: any) {
-    return this.http.post(endpoint, { body });
+    return this.http.post(endpoint, body);
   }
 }
