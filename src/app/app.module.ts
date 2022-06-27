@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NewDokmeComponent } from './pages/new-dokme/new-dokme.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NewDokmeComponent,
     PageNotFoundComponent,
+    ListDokmeComponent,
   ],
   imports: [
     BrowserModule,

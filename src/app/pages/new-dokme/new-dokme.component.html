@@ -1,9 +1,13 @@
-
 <mat-card>
   <mat-card-title>New Dokme</mat-card-title>
-  <mat-card-content >
-    <form  [formGroup]="form" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px grid">
-      <mat-form-field  appearance="fill" fxFlex="100">
+  <mat-card-content>
+    <form
+      [formGroup]="form"
+      fxLayout="row wrap"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px grid"
+    >
+      <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Url</mat-label>
         <input
           type="url"
@@ -23,7 +27,7 @@
           Url is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <mat-form-field  appearance="fill" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Title</mat-label>
         <input
           type="text"
@@ -37,7 +41,7 @@
           Title is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <mat-form-field  appearance="fill" fxFlex="100">
+      <mat-form-field appearance="fill" fxFlex="100">
         <mat-label>Description</mat-label>
         <textarea
           matInput
@@ -63,6 +67,12 @@
     >
       Save
     </button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="goToHome()"
+    >
+      cancel
+    </button>
   </mat-card-actions>
 </mat-card>
-
