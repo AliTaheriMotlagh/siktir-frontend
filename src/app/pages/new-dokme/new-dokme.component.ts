@@ -37,7 +37,7 @@ export class NewDokmeComponent implements OnInit {
     if (this.form.valid) {
       const dto: DokmeDto = this.form.getRawValue();
       this.dokmeService.createDokme(dto).subscribe((res) => {
-        debugger;
+        this.navigationService.goToHome();
       });
     }
   }
