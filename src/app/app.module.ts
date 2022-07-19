@@ -14,10 +14,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { NewDokmeComponent } from './pages/new-dokme/new-dokme.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
+import { AuthInterceptor } from './interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,13 @@ import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-
     MatCardModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

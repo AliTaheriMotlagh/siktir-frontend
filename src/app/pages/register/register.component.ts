@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FingerprintjsProAngularService } from '@fingerprintjs/fingerprintjs-pro-angular';
 import { AuthDto } from 'src/app/dto';
 import { AuthService } from 'src/app/services';
 
@@ -9,28 +8,17 @@ import { AuthService } from 'src/app/services';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  visitorId: string = '';
-  constructor(
-    private fingerprintjsProAngularService: FingerprintjsProAngularService,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.getVisitorId();
-  }
+  ngOnInit(): void {}
 
   getMyData() {
     const dto: AuthDto = {
-      fingerPrint: this.visitorId,
+      fingerPrint: this.authService.fingerprint,
     };
 
     this.authService.Register(dto).subscribe((res) => {
       debugger;
     });
-  }
-
-  async getVisitorId() {
-    const data = await this.fingerprintjsProAngularService.getVisitorData();
-    this.visitorId = data.visitorId;
   }
 }

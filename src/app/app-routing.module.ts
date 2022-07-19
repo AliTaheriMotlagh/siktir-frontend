@@ -6,9 +6,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'dokme/new', component: NewDokmeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
