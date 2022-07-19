@@ -16,6 +16,8 @@ import { NewDokmeComponent } from './pages/new-dokme/new-dokme.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,13 @@ import { ListDokmeComponent } from './components/list-dokme/list-dokme.component
     NewDokmeComponent,
     PageNotFoundComponent,
     ListDokmeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
+    FingerprintjsProAngularModule.forRoot({
+      loadOptions: { apiKey: 'iiuIAXZValPDjn7qAtXg' },
+    }),
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

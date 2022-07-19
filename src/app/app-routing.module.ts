@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NewDokmeComponent } from './pages/new-dokme/new-dokme.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'dokme/new', component: NewDokmeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DokmeDto } from '../dto';
 import { ApiService } from './api.service';
@@ -16,6 +17,4 @@ export class DokmeService {
   getAllDokme() {
     return this.api.get(`${environment.apiUrl}/api/dokme/list`);
   }
-
-
 }

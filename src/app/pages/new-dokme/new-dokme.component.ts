@@ -11,17 +11,17 @@ import { DokmeService } from 'src/app/services/dokme.service';
 })
 export class NewDokmeComponent implements OnInit {
   form = new FormGroup({
-    url: new FormControl('https://siktir.fun', [
+    url: new FormControl('', [
       Validators.required,
       Validators.pattern(
         '^(?:(?:http(?:s)?|ftp)://)(?:\\S+(?::(?:\\S)*)?@)?(?:(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)(?:\\.(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)*(?:\\.(?:[a-z0-9\u00a1-\uffff]){2,})(?::(?:\\d){2,5})?(?:/(?:\\S)*)?$' //Todo : validate url prefctly
       ),
     ]),
-    title: new FormControl('masalanTitle', [
+    title: new FormControl('', [
       Validators.required,
       Validators.maxLength(31),
     ]),
-    description: new FormControl('masalan Description', [
+    description: new FormControl('', [
       Validators.required,
       Validators.maxLength(256),
     ]),
