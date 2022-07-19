@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthDto } from 'src/app/dto';
-import { AuthService } from 'src/app/services';
+import { AuthService, NavigationService } from 'src/app/services';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +8,10 @@ import { AuthService } from 'src/app/services';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -17,8 +20,8 @@ export class RegisterComponent implements OnInit {
       fingerPrint: this.authService.fingerprint,
     };
 
-    this.authService.Register(dto).subscribe((res) => {
-      debugger;
+    this.authService.Register(dto).subscribe(() => {
+      this.navigationService.goToHome();
     });
   }
 }
