@@ -12,6 +12,6 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit(): void {}
 
   goToHome() {
-    this.navigationService.goToHome();
+    this.navigationService.GoToHome();
   }
 }

@@ -1,9 +1,4 @@
-<app-list-dokme></app-list-dokme>
-<button
-  mat-fab
-  color="primary"
-  aria-label="Example icon button with a delete icon"
-  (click)="goToNewDokme()"
->
+<app-list-dokme (DokmeSiktirHandler)="dokmeSiktirHandler($event)" [UpdateItem]="updateItem"></app-list-dokme>
+<button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="goToNewDokme()">
   <mat-icon>add</mat-icon>
 </button>

@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     };
 
     this.authService.Register(dto).subscribe(() => {
-      this.navigationService.goToHome();
+      this.navigationService.GoToHome();
     });
   }
 }

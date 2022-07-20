@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     const toUrl = state.url;
     if (this.authService.isAuthenticated()) {
       if (toUrl.indexOf('/register') === 0) {
-        return this.navigationService.goToHome();
+        return this.navigationService.GoToHome();
       }
       return true;
     } else {
@@ -36,6 +36,6 @@ export class AuthGuard implements CanActivate {
       }
     }
 
-    return this.navigationService.goToRegister();
+    return this.navigationService.GoToRegister();
   }
 }

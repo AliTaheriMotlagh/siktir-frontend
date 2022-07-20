@@ -10,6 +10,11 @@ export class ApiService {
   post<T>(endpoint: string, body?: any) {
     return this.http.post<T>(endpoint, body);
   }
+
+  put<T>(endpoint: string, body?: any) {
+    return this.http.put<T>(endpoint, body);
+  }
+
   get<T>(endpoint: string, params?: any) {
     return this.http.get<T>(endpoint, { params });
   }

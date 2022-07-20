@@ -37,13 +37,13 @@ export class CreateDokmeComponent implements OnInit {
   saveBtnHandler() {
     if (this.form.valid) {
       const dto: CreateDokmeDto = this.form.getRawValue();
-      this.dokmeService.createDokme(dto).subscribe((res) => {
-        this.navigationService.goToHome();
+      this.dokmeService.CreateDokme(dto).subscribe((res) => {
+        this.navigationService.GoToHome();
       });
     }
   }
   goToHome() {
-    this.navigationService.goToHome();
+    this.navigationService.GoToHome();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DokmeDto } from 'src/app/dto';
 import { DokmeService } from 'src/app/services';
 
@@ -8,15 +8,34 @@ import { DokmeService } from 'src/app/services';
   styleUrls: ['./list-dokme.component.scss'],
 })
 export class ListDokmeComponent implements OnInit {
-  constructor(private dokmeService: DokmeService) {}
   dokmeList: DokmeDto[] = [];
+  @Output() DokmeSiktirHandler = new EventEmitter();
+  @Input() set UpdateItem(v: DokmeDto | null) {
+    if (v) {
+      const index = this.dokmeList.findIndex((i) => i.id == v.id);
+      this.dokmeList[index] = v;
+    }
+  }
+  constructor(private dokmeService: DokmeService) {}
 
   ngOnInit(): void {
     this.loadData();
   }
+
   loadData() {
-    this.dokmeService.getAllDokme().subscribe((res) => {
+    this.dokmeService.GetAllDokme().subscribe((res) => {
       this.dokmeList = res;
     });
+  }
+
+  dokmeSiktirHandler(dokmeId: string) {
+    this.DokmeSiktirHandler.emit(dokmeId);
+  }
+
+  updateSiktirCount(dokmeId: string, siktirCount: number) {
+    const dokme = this.dokmeList.find((i) => i.id == dokmeId);
+    if (dokme) {
+      dokme.siktirCount = siktirCount;
+    }
   }
 }
