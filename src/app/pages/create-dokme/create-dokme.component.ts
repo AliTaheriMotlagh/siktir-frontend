@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DokmeDto } from 'src/app/dto';
+import { CreateDokmeDto } from 'src/app/dto';
 import { NavigationService } from 'src/app/services';
 import { DokmeService } from 'src/app/services/dokme.service';
 
@@ -12,7 +12,7 @@ import { DokmeService } from 'src/app/services/dokme.service';
 export class CreateDokmeComponent implements OnInit {
 
   form = new FormGroup({
-    url: new FormControl('', [
+    url: new FormControl('https://', [
       Validators.required,
       Validators.pattern(
         '^(?:(?:http(?:s)?|ftp)://)(?:\\S+(?::(?:\\S)*)?@)?(?:(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)(?:\\.(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)*(?:\\.(?:[a-z0-9\u00a1-\uffff]){2,})(?::(?:\\d){2,5})?(?:/(?:\\S)*)?$' //Todo : validate url prefctly
@@ -36,7 +36,7 @@ export class CreateDokmeComponent implements OnInit {
   ngOnInit(): void {}
   saveBtnHandler() {
     if (this.form.valid) {
-      const dto: DokmeDto = this.form.getRawValue();
+      const dto: CreateDokmeDto = this.form.getRawValue();
       this.dokmeService.createDokme(dto).subscribe((res) => {
         this.navigationService.goToHome();
       });

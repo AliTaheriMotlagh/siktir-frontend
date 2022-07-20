@@ -15,9 +15,8 @@ export class ListDokmeComponent implements OnInit {
     this.loadData();
   }
   loadData() {
-    this.dokmeService.getAllDokme().subscribe((res: any) => {
+    this.dokmeService.getAllDokme().subscribe((res) => {
       this.dokmeList = res;
-      debugger;
     });
   }
 }
