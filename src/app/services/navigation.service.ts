@@ -12,6 +12,6 @@ export class NavigationService {
   }
 
   goToNewDokme() {
-    return this.route.navigate(['/', 'dokme', 'new']);
+    return this.route.navigate(['/', 'dokmes', 'create']);
   }
 }

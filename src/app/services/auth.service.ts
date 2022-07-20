@@ -20,7 +20,7 @@ export class AuthService {
 
   Register(dto: AuthDto) {
     return this.api
-      .post<TokenDto>(`${environment.apiUrl}/auth/register`, dto)
+      .post<TokenDto>(`${environment.apiUrl}/api/auth/register`, dto)
       .pipe(tap((data) => this.userInfo.next(data.access_token)));
   }
 

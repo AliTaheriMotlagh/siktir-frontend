@@ -11,10 +11,10 @@ export class DokmeService {
   constructor(private api: ApiService) {}
 
   createDokme(dto: DokmeDto) {
-    return this.api.post(`${environment.apiUrl}/api/dokme/create`, dto);
+    return this.api.post(`${environment.apiUrl}/api/dokmes/create`, dto);
   }
 
   getAllDokme() {
-    return this.api.get(`${environment.apiUrl}/api/dokme/list`);
+    return this.api.get(`${environment.apiUrl}/api/dokmes`);
   }
 }

@@ -5,11 +5,12 @@ import { NavigationService } from 'src/app/services';
 import { DokmeService } from 'src/app/services/dokme.service';
 
 @Component({
-  selector: 'app-new-dokme',
-  templateUrl: './new-dokme.component.html',
-  styleUrls: ['./new-dokme.component.scss'],
+  selector: 'app-create-dokme',
+  templateUrl: './create-dokme.component.html',
+  styleUrls: ['./create-dokme.component.scss']
 })
-export class NewDokmeComponent implements OnInit {
+export class CreateDokmeComponent implements OnInit {
+
   form = new FormGroup({
     url: new FormControl('', [
       Validators.required,
@@ -44,4 +45,5 @@ export class NewDokmeComponent implements OnInit {
   goToHome() {
     this.navigationService.goToHome();
   }
+
 }
