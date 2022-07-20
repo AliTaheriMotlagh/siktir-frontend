@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +22,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
 import { AuthInterceptor } from './interceptor';
 import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.component';
+import { environment } from 'src/environments/environment';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -31,15 +38,22 @@ import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.componen
     CreateDokmeComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     FingerprintjsProAngularModule.forRoot({
       loadOptions: { apiKey: 'iiuIAXZValPDjn7qAtXg' },
     }),
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.apiUrl],
+        disallowedRoutes: [],
+      },
+    }),
     FlexLayoutModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,

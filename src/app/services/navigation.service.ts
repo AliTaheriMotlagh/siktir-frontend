@@ -11,6 +11,10 @@ export class NavigationService {
     return this.route.navigate(['/', 'home']);
   }
 
+  goToRegister() {
+    return this.route.navigate(['/', 'register']);
+  }
+
   goToNewDokme() {
     return this.route.navigate(['/', 'dokmes', 'create']);
   }

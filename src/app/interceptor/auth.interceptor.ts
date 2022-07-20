@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AuthService } from '../services';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let newReq = request.clone({
       headers: request.headers.set(
         'Authorization',
-        'bearer ' + this.authService.userInfo.getValue()
+        'bearer ' + this.authService.GetToken()
       ),
     });
     return next.handle(newReq);

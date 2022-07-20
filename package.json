@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^14.0.3",
     "@angular/platform-browser-dynamic": "^14.0.3",
     "@angular/router": "^14.0.3",
+    "@auth0/angular-jwt": "^5.0.2",
     "@fingerprintjs/fingerprintjs-pro-angular": "^1.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -15,9 +15,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getMyData() {
+  async getMyData() {
     const dto: AuthDto = {
-      fingerPrint: this.authService.fingerprint,
+      fingerPrint: await this.authService.GetFingerprint(),
     };
 
     this.authService.Register(dto).subscribe(() => {
