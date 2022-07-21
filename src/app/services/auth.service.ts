@@ -41,6 +41,10 @@ export class AuthService {
     return localStorage.getItem('access_token');
   }
 
+  RemoveToken() {
+    localStorage.removeItem('access_token');
+  }
+
   private setUser(access_token: string) {
     if (!this.jwtHelper.isTokenExpired(access_token)) {
       this.isLoggedIn = true;

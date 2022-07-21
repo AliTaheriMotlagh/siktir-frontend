@@ -20,7 +20,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
-import { AuthInterceptor } from './interceptor';
+import { AuthInterceptor, ErrorInterceptor } from './interceptor';
 import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.component';
 import { environment } from 'src/environments/environment';
 
@@ -61,6 +61,11 @@ export function tokenGetter() {
     MatSnackBarModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
