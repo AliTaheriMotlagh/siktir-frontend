@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthDto } from 'src/app/dto';
-import { AuthService, NavigationService } from 'src/app/services';
+import {
+  AuthService,
+  NavigationService,
+  NotificationService,
+} from 'src/app/services';
 
 @Component({
   selector: 'app-register',
@@ -10,14 +14,20 @@ import { AuthService, NavigationService } from 'src/app/services';
 export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {}
 
   async getMyData() {
+    const fp = await this.authService.GetFingerprint();
+    if (!fp) {
+      this.notificationService.OpenError('your ad block is on');
+      return;
+    }
     const dto: AuthDto = {
-      fingerPrint: await this.authService.GetFingerprint(),
+      fingerPrint: fp,
     };
 
     this.authService.Register(dto).subscribe(() => {
