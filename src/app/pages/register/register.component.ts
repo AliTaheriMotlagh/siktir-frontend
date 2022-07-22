@@ -21,17 +21,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   async getMyData() {
-    const fp = await this.authService.GetFingerprint();
-    if (!fp) {
-      this.notificationService.OpenError('your ad block is on');
-      return;
-    }
-    const dto: AuthDto = {
-      fingerPrint: fp,
-    };
+    try {
+      const dto: AuthDto = {
+        fingerPrint: await this.authService.GetFingerprint(),
+      };
 
-    this.authService.Register(dto).subscribe(() => {
-      this.navigationService.GoToHome();
-    });
+      this.authService.Register(dto).subscribe(() => {
+        this.navigationService.GoToHome();
+      });
+    } catch (error) {
+      this.notificationService.OpenError('your ad block is on');
+    }
   }
 }
