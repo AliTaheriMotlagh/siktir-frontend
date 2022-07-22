@@ -2,24 +2,25 @@
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{ item.title }}</mat-card-title>
-    <mat-card-subtitle>{{item.createdAt | date:'medium' }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ item.createdAt | date: "medium" }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-
     <p>
       {{ item.description }}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-mini-fab color="warn" aria-label="dokme siktir" [matBadge]="item.siktirCount"
-      (click)="dokmeSiktirHandler(item.id)">
-      <mat-icon>
-        radio_button_unchecked
-      </mat-icon>
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="dokme siktir"
+      [matBadge]="item.siktirCount"
+      (click)="dokmeSiktirHandler(item.id)"
+      [disabled]="canSiktir(item.id)"
+    >
+      <mat-icon> radio_button_unchecked </mat-icon>
     </button>
   </mat-card-actions>
-  <mat-card-footer>
-
-  </mat-card-footer>
+  <mat-card-footer> </mat-card-footer>
 </mat-card>

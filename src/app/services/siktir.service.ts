@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { DokmeDto, FireSiktirDto } from '../dto';
+import { DokmeDto, FireSiktirDto, MySiktirsDto } from '../dto';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -11,5 +11,9 @@ export class SiktirService {
 
   FireSiktir(dto: FireSiktirDto) {
     return this.api.put<DokmeDto>(`${environment.apiUrl}/api/siktir/fire`, dto);
+  }
+
+  GetMySiktir() {
+    return this.api.get<MySiktirsDto[]>(`${environment.apiUrl}/api/siktir/my`);
   }
 }

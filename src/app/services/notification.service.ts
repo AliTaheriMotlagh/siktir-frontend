@@ -10,4 +10,7 @@ export class NotificationService {
   OpenSuccess(msg: string) {
     this._snackBar.open(msg, 'OK', { duration: 5000 });
   }
+  OpenError(msg: string) {
+    this._snackBar.open(msg, 'OK', { duration: 5000 });
+  }
 }

@@ -7,11 +7,14 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
-import { AuthService } from '../services';
+import { AuthService, NotificationService } from '../services';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private notificationService: NotificationService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -23,9 +26,11 @@ export class ErrorInterceptor implements HttpInterceptor {
           //Todo : refresh token
           this.authService.RemoveToken();
           return of();
-        } else {
-          return throwError(error);
+        } else if (error.status === 406) {
+          this.notificationService.OpenError('only one time can siktir dokme');
+          return of();
         }
+        return throwError(error);
       })
     );
   }
