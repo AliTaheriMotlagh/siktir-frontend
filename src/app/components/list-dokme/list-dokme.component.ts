@@ -30,6 +30,7 @@ export class ListDokmeComponent implements OnInit {
   }
 
   dokmeSiktirHandler(dokmeId: string) {
+    navigator.vibrate([500])
     this.DokmeSiktirHandler.emit(dokmeId);
   }
 }
