@@ -41,12 +41,19 @@ export class ListDokmeComponent implements OnInit {
   }
 
   dokmeSiktirHandler(dokmeId: string) {
-    // navigator.vibrate([500]);
     this.DokmeSiktirHandler.emit(dokmeId);
+    this.vibrate();
   }
 
   canSiktir(dokmeId: string): boolean {
     return !!this.mySiktirs.find((i) => i.dokmeId === dokmeId);
+  }
+
+  vibrate() {
+    if (!window.navigator.vibrate) {
+      return;
+    }
+    navigator.vibrate([200]);
   }
 
   transform(url: string) {

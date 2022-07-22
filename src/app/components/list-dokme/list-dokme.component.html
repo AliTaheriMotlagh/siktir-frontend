@@ -9,19 +9,23 @@
     <p>
       {{ item.description }}
     </p>
-    <!-- <iframe [src]="transform(item.url)"></iframe> -->
+    <iframe [src]="transform(item.url)"></iframe>
   </mat-card-content>
   <mat-card-actions>
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="dokme siktir"
-      [matBadge]="item.siktirCount"
-      (click)="dokmeSiktirHandler(item.id)"
-      [disabled]="canSiktir(item.id)"
-    >
-      <mat-icon> radio_button_unchecked </mat-icon>
-    </button>
+    <div fxFlex="row" fxLayoutAlign="center center">
+      <button
+        mat-fab
+        color="warn"
+        aria-label="dokme siktir"
+        [matBadge]="item.siktirCount"
+        matBadgeSize="large"
+        matBadgeOverlap="false"
+        (click)="dokmeSiktirHandler(item.id)"
+        [disabled]="canSiktir(item.id)"
+      >
+        <mat-icon> radio_button_unchecked </mat-icon>
+      </button>
+    </div>
   </mat-card-actions>
   <mat-card-footer> </mat-card-footer>
 </mat-card>
