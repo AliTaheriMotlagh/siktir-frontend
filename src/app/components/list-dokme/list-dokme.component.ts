@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DokmeDto, MySiktirsDto } from 'src/app/dto';
 import { DokmeService, SiktirService } from 'src/app/services';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-dokme',
@@ -22,7 +23,8 @@ export class ListDokmeComponent implements OnInit {
 
   constructor(
     private dokmeService: DokmeService,
-    private siktirService: SiktirService
+    private siktirService: SiktirService,
+    private domSanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +47,9 @@ export class ListDokmeComponent implements OnInit {
 
   canSiktir(dokmeId: string): boolean {
     return !!this.mySiktirs.find((i) => i.dokmeId === dokmeId);
+  }
+
+  transform(url: string) {
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

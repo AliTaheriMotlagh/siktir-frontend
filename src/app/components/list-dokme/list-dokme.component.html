@@ -9,6 +9,7 @@
     <p>
       {{ item.description }}
     </p>
+    <iframe [src]="transform(item.url)"></iframe>
   </mat-card-content>
   <mat-card-actions>
     <button
