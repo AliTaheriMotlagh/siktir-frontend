@@ -9,6 +9,7 @@ import { DokmeService } from 'src/app/services';
 })
 export class ListDokmeComponent implements OnInit {
   dokmeList: DokmeDto[] = [];
+  isDokmeLoading = false;
   @Output() DokmeSiktirHandler = new EventEmitter();
   @Input() set UpdateItem(v: DokmeDto | null) {
     if (v) {

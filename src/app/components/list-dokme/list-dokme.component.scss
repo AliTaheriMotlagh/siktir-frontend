@@ -1,10 +1,11 @@
-.dokme {
-  max-width: 400px;
-  margin: 1.5%;
-}
-
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
- 
+.dokme {
+  margin-top: 0.7%;
+}
+.siktir-count-el {
+  margin-left: 20%;
+  font-weight: bolder;
+}
