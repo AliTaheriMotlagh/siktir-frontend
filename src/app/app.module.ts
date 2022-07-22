@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,6 +61,8 @@ export function tokenGetter() {
     MatCardModule,
     MatInputModule,
     MatSnackBarModule,
+    MatToolbarModule,
+    MatSelectModule,
   ],
   providers: [
     {

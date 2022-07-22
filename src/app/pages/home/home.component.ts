@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DokmeDto, FireSiktirDto } from 'src/app/dto';
+import { DokmeDto, FireSiktirDto, SelectOptionDto } from 'src/app/dto';
 import { NavigationService, SiktirService } from 'src/app/services';
 
 @Component({
@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
     private siktirService: SiktirService,
     private navigationService: NavigationService
   ) {}
+
 
   ngOnInit(): void {}
 

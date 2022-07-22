@@ -14,3 +14,4 @@ export interface DokmeDto {
   siktirCount: number;
   userId: string;
 }
+

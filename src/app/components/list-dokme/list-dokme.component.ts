@@ -31,11 +31,4 @@ export class ListDokmeComponent implements OnInit {
   dokmeSiktirHandler(dokmeId: string) {
     this.DokmeSiktirHandler.emit(dokmeId);
   }
-
-  updateSiktirCount(dokmeId: string, siktirCount: number) {
-    const dokme = this.dokmeList.find((i) => i.id == dokmeId);
-    if (dokme) {
-      dokme.siktirCount = siktirCount;
-    }
-  }
 }
