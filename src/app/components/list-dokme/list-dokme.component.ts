@@ -44,6 +44,7 @@ export class ListDokmeComponent implements OnInit {
   dokmeSiktirHandler(dokmeId: string) {
     this.DokmeSiktirHandler.emit(dokmeId);
     this.vibrate();
+    this.makeNoise();
   }
 
   canSiktir(dokmeId: string): boolean {
@@ -55,6 +56,13 @@ export class ListDokmeComponent implements OnInit {
       return;
     }
     navigator.vibrate([200]);
+  }
+
+  makeNoise() {
+    var audio = new Audio();
+    audio.src = "/assets/sounds/beep.wav";
+    audio.load();
+    audio.play();
   }
 
   getScreenshotOfUrl(dokmeUrl: string) {
