@@ -18,4 +18,8 @@ export class NavigationService {
   GoToNewDokme() {
     return this.route.navigate(['/', 'dokmes', 'create']);
   }
+
+  goToDokmeUrl(url: string) {
+    window.open(url);
+  }
 }

@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DokmeDto, MySiktirsDto } from 'src/app/dto';
-import { DokmeService, SiktirService } from 'src/app/services';
+import {
+  DokmeService,
+  NavigationService,
+  SiktirService,
+} from 'src/app/services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
@@ -25,7 +29,8 @@ export class ListDokmeComponent implements OnInit {
   constructor(
     private dokmeService: DokmeService,
     private siktirService: SiktirService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -60,13 +65,17 @@ export class ListDokmeComponent implements OnInit {
 
   makeNoise() {
     var audio = new Audio();
-    audio.src = "/assets/sounds/beep.wav";
+    audio.src = '/assets/sounds/beep.wav';
     audio.load();
     audio.play();
   }
 
   getScreenshotOfUrl(dokmeUrl: string) {
     return `https://api.apiflash.com/v1/urltoimage?access_key=${environment.screenshotApiKey}&wait_until=page_loaded&url=${dokmeUrl}`;
+  }
+
+  goToUrl(url: string) {
+    this.navigationService.goToDokmeUrl(url);
   }
 
   transform(url: string) {

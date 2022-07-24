@@ -1,16 +1,30 @@
 <mat-card class="dokme-card" *ngFor="let item of dokmeList">
   <mat-card-title-group>
-    <mat-card-title>{{ item.title }}</mat-card-title>
+    <mat-card-title (click)="goToUrl(item.url)">{{
+      item.title
+    }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
-    <img mat-card-sm-image [src]="transform(getScreenshotOfUrl(item.url))" alt="url is incorrect">
+    <img
+      mat-card-sm-image
+      [src]="transform(getScreenshotOfUrl(item.url))"
+      alt="url is incorrect"
+    />
   </mat-card-title-group>
   <mat-card-content>
     <p>{{ item.description }}</p>
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex="row" fxLayoutAlign="center center">
-      <button mat-fab color="warn" aria-label="dokme siktir" [matBadge]="item.siktirCount" matBadgeSize="large"
-        matBadgeOverlap="false" (click)="dokmeSiktirHandler(item.id)" [disabled]="canSiktir(item.id)">
+      <button
+        mat-fab
+        color="warn"
+        aria-label="dokme siktir"
+        [matBadge]="item.siktirCount"
+        matBadgeSize="large"
+        matBadgeOverlap="false"
+        (click)="dokmeSiktirHandler(item.id)"
+        [disabled]="canSiktir(item.id)"
+      >
         <mat-icon> room_service </mat-icon>
       </button>
     </div>
