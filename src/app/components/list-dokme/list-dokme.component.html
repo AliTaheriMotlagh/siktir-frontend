@@ -1,14 +1,11 @@
-<mat-card *ngFor="let item of dokmeList" class="dokme">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+<mat-card class="dokme-card" *ngFor="let item of dokmeList">
+  <mat-card-title-group>
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image [src]="transform(getScreenshotOfUrl(item.url))" alt="url is incorrect">
+    <img mat-card-sm-image [src]="transform(getScreenshotOfUrl(item.url))" alt="url is incorrect">
+  </mat-card-title-group>
   <mat-card-content>
-    <p>
-      {{ item.description }}
-    </p>
+    <p>{{ item.description }}</p>
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex="row" fxLayoutAlign="center center">
@@ -18,5 +15,4 @@
       </button>
     </div>
   </mat-card-actions>
-  <mat-card-footer> </mat-card-footer>
 </mat-card>

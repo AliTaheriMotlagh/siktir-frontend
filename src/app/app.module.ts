@@ -11,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -65,7 +64,6 @@ export function tokenGetter() {
     MatInputModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatSelectModule,
     MatBadgeModule,
   ],
   providers: [
