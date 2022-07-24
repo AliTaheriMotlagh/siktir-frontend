@@ -4,25 +4,16 @@
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
   </mat-card-header>
-
+  <img mat-card-image [src]="transform(getScreenshotOfUrl(item.url))" alt="url is incorrect">
   <mat-card-content>
     <p>
       {{ item.description }}
     </p>
-    <iframe [src]="transform(item.url)"></iframe>
   </mat-card-content>
   <mat-card-actions>
     <div fxFlex="row" fxLayoutAlign="center center">
-      <button
-        mat-fab
-        color="warn"
-        aria-label="dokme siktir"
-        [matBadge]="item.siktirCount"
-        matBadgeSize="large"
-        matBadgeOverlap="false"
-        (click)="dokmeSiktirHandler(item.id)"
-        [disabled]="canSiktir(item.id)"
-      >
+      <button mat-fab color="warn" aria-label="dokme siktir" [matBadge]="item.siktirCount" matBadgeSize="large"
+        matBadgeOverlap="false" (click)="dokmeSiktirHandler(item.id)" [disabled]="canSiktir(item.id)">
         <mat-icon> room_service </mat-icon>
       </button>
     </div>

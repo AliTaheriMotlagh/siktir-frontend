@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DokmeDto, MySiktirsDto } from 'src/app/dto';
 import { DokmeService, SiktirService } from 'src/app/services';
 import { DomSanitizer } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-dokme',
@@ -54,6 +55,10 @@ export class ListDokmeComponent implements OnInit {
       return;
     }
     navigator.vibrate([200]);
+  }
+
+  getScreenshotOfUrl(dokmeUrl: string) {
+    return `https://api.apiflash.com/v1/urltoimage?access_key=${environment.screenshotApiKey}&wait_until=page_loaded&url=${dokmeUrl}`;
   }
 
   transform(url: string) {
