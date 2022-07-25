@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NavigationService {
-  constructor(private route: Router) {}
+  constructor(private route: Router, private domSanitizer: DomSanitizer) {}
 
   GoToHome() {
     return this.route.navigate(['/', 'home']);
@@ -21,5 +22,9 @@ export class NavigationService {
 
   goToDokmeUrl(url: string) {
     window.open(url);
+  }
+
+  transformToSafeUrl(url: string) {
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

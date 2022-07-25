@@ -1,0 +1,14 @@
+<section fxLayout="row" class="url-card" (click)="goToUrl(data.url)">
+  <img [src]="data.img" fxFlex="30" />
+  <div fxFlex="70" fxLayout="column" fxLayoutAlign="space-around">
+    <span
+      ><img
+        class="icon"
+        [src]="navigationService.transformToSafeUrl(data.icon)"
+        alt="website icon"
+      /><span>{{ data.hostname }}</span></span
+    >
+    <span>{{ data.title }}</span>
+    <span>{{ data.description }}</span>
+  </div>
+</section>

@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,7 @@ import { AuthInterceptor, ErrorInterceptor } from './interceptors';
 import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.component';
 import { environment } from 'src/environments/environment';
 import { DurationDatePipe } from './pipes';
+import { UrlPreviewComponent } from './components/url-preview/url-preview.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -40,6 +43,7 @@ export function tokenGetter() {
     RegisterComponent,
     CreateDokmeComponent,
     DurationDatePipe,
+    UrlPreviewComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,6 +69,8 @@ export function tokenGetter() {
     MatSnackBarModule,
     MatToolbarModule,
     MatBadgeModule,
+    MatMenuModule,
+    MatDividerModule
   ],
   providers: [
     {

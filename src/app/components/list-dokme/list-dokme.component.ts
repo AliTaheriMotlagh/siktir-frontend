@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DokmeDto, MySiktirsDto } from 'src/app/dto';
+import { DokmeDto, MetadataUrlDto, MySiktirsDto } from 'src/app/dto';
 import {
   DokmeService,
   NavigationService,
   SiktirService,
 } from 'src/app/services';
-import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -25,11 +24,18 @@ export class ListDokmeComponent implements OnInit {
       this.mySiktirs.push({ dokmeId: v.id });
     }
   }
+  urlItem: MetadataUrlDto = {
+    description: 'Bahram · Single · 2021 · 1 songs.',
+    img: 'https://pbs.twimg.com/card_img/1549074405657034754/y0Tq-qxy?format=jpg&name=240x240',
+    hostname: 'https://open.spotify.com',
+    icon: 'https://open.spotify.com/favicon.ico',
+    title: 'بشنو',
+    url: 'https://open.spotify.com/album/5ayHMAS0qRZWlVYxP2F2uz',
+  };
 
   constructor(
     private dokmeService: DokmeService,
     private siktirService: SiktirService,
-    private domSanitizer: DomSanitizer,
     private navigationService: NavigationService
   ) {}
 
@@ -70,15 +76,7 @@ export class ListDokmeComponent implements OnInit {
     audio.play();
   }
 
-  getScreenshotOfUrl(dokmeUrl: string) {
-    return `https://api.apiflash.com/v1/urltoimage?access_key=${environment.screenshotApiKey}&wait_until=page_loaded&url=${dokmeUrl}`;
-  }
-
   goToUrl(url: string) {
     this.navigationService.goToDokmeUrl(url);
-  }
-
-  transform(url: string) {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

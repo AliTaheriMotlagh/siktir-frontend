@@ -15,3 +15,11 @@ export interface DokmeDto {
   userId: string;
 }
 
+export interface MetadataUrlDto {
+  hostname: string;
+  url: string;
+  title: string;
+  description: string;
+  img: string;
+  icon: string;
+}
