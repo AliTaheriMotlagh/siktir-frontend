@@ -6,9 +6,13 @@
   overflow: hidden;
   cursor: pointer;
 }
-img{
-    object-fit: cover;
+img {
+  object-fit: cover;
 }
-.icon{
-    height: 24px;
+.icon {
+  height: 24px;
+}
+.image{
+  min-width: 100px;
+  min-height: 100px;
 }

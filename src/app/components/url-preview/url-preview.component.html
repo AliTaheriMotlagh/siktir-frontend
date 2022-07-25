@@ -1,14 +1,16 @@
-<section fxLayout="row" class="url-card" (click)="goToUrl(data.url)">
-  <img [src]="data.img" fxFlex="30" />
-  <div fxFlex="70" fxLayout="column" fxLayoutAlign="space-around">
-    <span
-      ><img
-        class="icon"
-        [src]="navigationService.transformToSafeUrl(data.icon)"
-        alt="website icon"
-      /><span>{{ data.hostname }}</span></span
-    >
+<section fxLayout="row wrap" class="url-card" >
+  <img class="image" [src]="data.img" fxFlex="30" />
+  <div fxFlex="70" fxLayout="column" fxLayoutAlign="space-around center">
+    <span>
+      <button mat-button (click)="goToUrl(data.url)">
+        <img
+          class="icon"
+          [src]="navigationService.transformToSafeUrl(data.icon)"
+          alt="website icon"
+        />
+        <span>{{ data.hostname }}</span>
+      </button>
+    </span>
     <span>{{ data.title }}</span>
-    <span>{{ data.description }}</span>
   </div>
 </section>
