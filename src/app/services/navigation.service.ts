@@ -20,6 +20,10 @@ export class NavigationService {
     return this.route.navigate(['/', 'dokmes', 'create']);
   }
 
+  GoToDokme(dokmeId: string) {
+    return this.route.navigate(['/', 'dokme', dokmeId]);
+  }
+
   goToDokmeUrl(url: string) {
     window.open(url);
   }

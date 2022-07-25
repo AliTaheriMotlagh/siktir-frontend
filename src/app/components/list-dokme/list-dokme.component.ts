@@ -39,7 +39,7 @@ export class ListDokmeComponent implements OnInit {
     this.dokmeService.GetAllDokme().subscribe((res) => {
       this.dokmeList = res;
     });
-    this.siktirService.GetMySiktir().subscribe((res) => {
+    this.siktirService.GetUserSiktir().subscribe((res) => {
       this.mySiktirs = res;
     });
   }
@@ -81,5 +81,8 @@ export class ListDokmeComponent implements OnInit {
       hostname: new URL(data.url).hostname,
       url: data.url,
     };
+  }
+  goToDokme(dokmeId: string) {
+    this.navigationService.GoToDokme(dokmeId);
   }
 }

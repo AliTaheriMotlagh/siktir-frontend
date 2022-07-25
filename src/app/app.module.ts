@@ -29,6 +29,7 @@ import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.componen
 import { environment } from 'src/environments/environment';
 import { DurationDatePipe } from './pipes';
 import { UrlPreviewComponent } from './components/url-preview/url-preview.component';
+import { DokmeComponent } from './pages/dokme/dokme.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -44,6 +45,7 @@ export function tokenGetter() {
     CreateDokmeComponent,
     DurationDatePipe,
     UrlPreviewComponent,
+    DokmeComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -18,6 +18,10 @@ export class DokmeService {
   }
 
   GetAllDokme() {
-    return this.api.get<DokmeDto[]>(`${environment.apiUrl}/api/dokmes`);
+    return this.api.get<DokmeDto[]>(`${environment.apiUrl}/api/dokmes/all`);
+  }
+
+  GetDokmeById(id: string) {
+    return this.api.get<DokmeDto>(`${environment.apiUrl}/api/dokmes/one/${id}`);
   }
 }

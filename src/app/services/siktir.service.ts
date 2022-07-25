@@ -13,7 +13,11 @@ export class SiktirService {
     return this.api.put<DokmeDto>(`${environment.apiUrl}/api/siktir/fire`, dto);
   }
 
-  GetMySiktir() {
+  GetUserSiktir() {
     return this.api.get<MySiktirsDto[]>(`${environment.apiUrl}/api/siktir/my`);
+  }
+
+  isDokmeSiktirByUser(dokmeId: string) {
+    return this.api.get<boolean>(`${environment.apiUrl}/api/siktir/${dokmeId}`);
   }
 }
