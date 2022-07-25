@@ -74,7 +74,7 @@ export class ListDokmeComponent implements OnInit {
 
   getUrlMetadata(data: DokmeDto): MetadataUrlDto {
     return {
-      title: data.title,
+      title: data.urlTitle,
       description: data.urlDescription,
       icon: data.urlIcon,
       img: data.urlImg,
