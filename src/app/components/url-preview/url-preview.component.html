@@ -5,12 +5,12 @@
       <button mat-button (click)="goToUrl(data.url)">
         <img
           class="icon"
-          [src]="navigationService.transformToSafeUrl(data.icon)"
+          [src]="navigationService.TransformToSafeUrl(data.icon)"
           alt="website icon"
         />
         <span>{{ data.hostname }}</span>
       </button>
     </span>
-    <span>{{ data.title }}</span>
+    <span class="title">{{ data.title }}</span>
   </div>
 </section>

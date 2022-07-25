@@ -3,7 +3,10 @@
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
   </mat-card-title-group>
-  <mat-card-content>
+  <mat-card-content fxLayout="column">
+    <button mat-stroked-button [disabled]="canSiktir(item.id)" disableRipple>
+      {{ item.siktirCount }}
+    </button>
     <p>{{ item.description }}</p>
     <app-url-preview [data]="getUrlMetadata(item)"></app-url-preview>
   </mat-card-content>
@@ -15,23 +18,12 @@
       <mat-icon>more_horiz</mat-icon>
     </button>
     <mat-menu #moreMenu="matMenu">
-      <button mat-menu-item>
+      <button
+        mat-menu-item
+        [cdkCopyToClipboard]="GetAbsoloteUrlOfDokme(item.id)"
+      >
         <mat-icon>content_copy</mat-icon> <span>Copy Link</span>
       </button>
     </mat-menu>
-    <div fxFlex="row" fxLayoutAlign="center center">
-      <button
-        mat-fab
-        color="warn"
-        aria-label="dokme siktir"
-        [matBadge]="item.siktirCount"
-        matBadgeSize="large"
-        matBadgeOverlap="false"
-        (click)="dokmeSiktirHandler(item.id)"
-        [disabled]="canSiktir(item.id)"
-      >
-        <mat-icon> room_service </mat-icon>
-      </button>
-    </div>
   </mat-card-actions>
 </mat-card>

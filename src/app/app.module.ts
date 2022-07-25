@@ -13,7 +13,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -74,7 +75,8 @@ export function tokenGetter() {
     MatToolbarModule,
     MatBadgeModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    ClipboardModule,
   ],
   providers: [
     {

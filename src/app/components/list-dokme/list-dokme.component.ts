@@ -34,8 +34,7 @@ export class ListDokmeComponent implements OnInit {
 
   ngOnInit(): void {
     const source = interval(10000);
-    //output: 0,1,2,3,4,5....
-    const subscribe = source.subscribe((val) => this.loadData());
+    source.subscribe((val) => this.loadData());
     this.loadData();
   }
 
@@ -73,7 +72,7 @@ export class ListDokmeComponent implements OnInit {
   }
 
   goToUrl(url: string) {
-    this.navigationService.goToDokmeUrl(url);
+    this.navigationService.GoToDokmeUrl(url);
   }
 
   getUrlMetadata(data: DokmeDto): MetadataUrlDto {
@@ -86,7 +85,12 @@ export class ListDokmeComponent implements OnInit {
       url: data.url,
     };
   }
+
   goToDokme(dokmeId: string) {
     this.navigationService.GoToDokme(dokmeId);
+  }
+
+  GetAbsoloteUrlOfDokme(dokmeId: string) {
+    return this.navigationService.GetAbsoloteUrlOfDokme(dokmeId)
   }
 }

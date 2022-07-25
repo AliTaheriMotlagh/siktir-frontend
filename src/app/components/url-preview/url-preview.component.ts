@@ -14,6 +14,6 @@ export class UrlPreviewComponent implements OnInit {
 
   ngOnInit(): void {}
   goToUrl(url: string) {
-    this.navigationService.goToDokmeUrl(url);
+    this.navigationService.GoToDokmeUrl(url);
   }
 }

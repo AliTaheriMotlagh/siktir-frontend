@@ -24,11 +24,15 @@ export class NavigationService {
     return this.route.navigate(['/', 'dokme', dokmeId]);
   }
 
-  goToDokmeUrl(url: string) {
+  GoToDokmeUrl(url: string) {
     window.open(url);
   }
 
-  transformToSafeUrl(url: string) {
+  GetAbsoloteUrlOfDokme(dokmeId: string) {
+    return `${window.location.origin}/dokme/${dokmeId}`;
+  }
+
+  TransformToSafeUrl(url: string) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
