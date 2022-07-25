@@ -16,8 +16,4 @@ export class SiktirService {
   GetUserSiktir() {
     return this.api.get<MySiktirsDto[]>(`${environment.apiUrl}/api/siktir/my`);
   }
-
-  isDokmeSiktirByUser(dokmeId: string) {
-    return this.api.get<boolean>(`${environment.apiUrl}/api/siktir/${dokmeId}`);
-  }
 }

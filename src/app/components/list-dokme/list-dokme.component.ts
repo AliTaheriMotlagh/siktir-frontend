@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { interval } from 'rxjs';
 import { DokmeDto, MetadataUrlDto, MySiktirsDto } from 'src/app/dto';
 import {
   DokmeService,
@@ -32,6 +33,9 @@ export class ListDokmeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const source = interval(10000);
+    //output: 0,1,2,3,4,5....
+    const subscribe = source.subscribe((val) => this.loadData());
     this.loadData();
   }
 

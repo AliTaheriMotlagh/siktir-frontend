@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <mat-card class="dokme-card" *ngIf="item">
   <mat-card-title-group>
     <mat-card-title>{{ item.title }}</mat-card-title>
@@ -17,7 +19,7 @@
         matBadgeSize="large"
         matBadgeOverlap="false"
         (click)="dokmeSiktirHandler(item.id)"
-        [disabled]="btnIsDisabled"
+        [disabled]="canSiktir(item.id)"
       >
         <mat-icon> room_service </mat-icon>
       </button>

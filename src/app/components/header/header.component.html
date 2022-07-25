@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    aria-label="logo"
+    (click)="navigationService.GoToHome()"
+  >
+    <img src="/assets/images/logo.png" class="logo-icon" />
+  </button>
+  <span class="spacer"></span>
+  <button
+    mat-icon-button
+    color="primary"
+    (click)="navigationService.GoToNewDokme()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>

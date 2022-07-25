@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DokmeDto, FireSiktirDto, MetadataUrlDto } from 'src/app/dto';
+import {
+  DokmeDto,
+  FireSiktirDto,
+  MetadataUrlDto,
+  MySiktirsDto,
+} from 'src/app/dto';
 import {
   DokmeService,
   NavigationService,
@@ -15,12 +20,12 @@ import {
 export class DokmeComponent implements OnInit {
   dokmeId = '';
   item!: DokmeDto;
-  btnIsDisabled = false;
+  mySiktirs: MySiktirsDto[] = [];
   constructor(
     private route: ActivatedRoute,
     private dokmeService: DokmeService,
     private siktirService: SiktirService,
-    private navigationService: NavigationService
+    public navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +38,13 @@ export class DokmeComponent implements OnInit {
     this.dokmeService.GetDokmeById(this.dokmeId).subscribe((res) => {
       this.item = res;
     });
-    this.siktirService.isDokmeSiktirByUser(this.dokmeId).subscribe((res) => {
-      if (res) {
-        this.btnIsDisabled = res;
-      }
+    this.siktirService.GetUserSiktir().subscribe((res) => {
+      this.mySiktirs = res;
     });
+  }
+
+  canSiktir(dokmeId: string): boolean {
+    return !!this.mySiktirs.find((i) => i.dokmeId === dokmeId);
   }
 
   dokmeSiktirHandler(dokmeId: string) {
@@ -47,7 +54,7 @@ export class DokmeComponent implements OnInit {
 
     this.siktirService.FireSiktir(dto).subscribe((res) => {
       this.item = res;
-      this.btnIsDisabled = true;
+      this.mySiktirs.push({ dokmeId: res.id });
     });
     this.vibrate();
     this.makeNoise();

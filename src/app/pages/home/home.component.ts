@@ -9,17 +9,9 @@ import { NavigationService, SiktirService } from 'src/app/services';
 })
 export class HomeComponent implements OnInit {
   updateItem: DokmeDto | null = null;
-  constructor(
-    private siktirService: SiktirService,
-    private navigationService: NavigationService
-  ) {}
-
+  constructor(private siktirService: SiktirService) {}
 
   ngOnInit(): void {}
-
-  goToNewDokme() {
-    this.navigationService.GoToNewDokme();
-  }
 
   dokmeSiktirHandler(dokmeId: string) {
     const dto: FireSiktirDto = {
