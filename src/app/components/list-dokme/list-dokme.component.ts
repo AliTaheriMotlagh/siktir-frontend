@@ -24,14 +24,6 @@ export class ListDokmeComponent implements OnInit {
       this.mySiktirs.push({ dokmeId: v.id });
     }
   }
-  urlItem: MetadataUrlDto = {
-    description: 'Bahram · Single · 2021 · 1 songs.',
-    img: 'https://pbs.twimg.com/card_img/1549074405657034754/y0Tq-qxy?format=jpg&name=240x240',
-    hostname: 'https://open.spotify.com',
-    icon: 'https://open.spotify.com/favicon.ico',
-    title: 'بشنو',
-    url: 'https://open.spotify.com/album/5ayHMAS0qRZWlVYxP2F2uz',
-  };
 
   constructor(
     private dokmeService: DokmeService,
@@ -78,5 +70,16 @@ export class ListDokmeComponent implements OnInit {
 
   goToUrl(url: string) {
     this.navigationService.goToDokmeUrl(url);
+  }
+
+  getUrlMetadata(data: DokmeDto): MetadataUrlDto {
+    return {
+      title: data.title,
+      description: data.urlDescription,
+      icon: data.urlIcon,
+      img: data.urlImg,
+      hostname: new URL(data.url).hostname,
+      url: data.url,
+    };
   }
 }

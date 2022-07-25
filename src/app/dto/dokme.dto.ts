@@ -13,6 +13,10 @@ export interface DokmeDto {
   description: string;
   siktirCount: number;
   userId: string;
+  urlTitle: string;
+  urlDescription: string;
+  urlImg: string;
+  urlIcon: string;
 }
 
 export interface MetadataUrlDto {
