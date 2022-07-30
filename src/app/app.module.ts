@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -38,6 +38,7 @@ import { UrlPreviewComponent } from './components/url-preview/url-preview.compon
 import { DokmeComponent } from './pages/dokme/dokme.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorHandlerService } from './services';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -102,6 +103,7 @@ export function tokenGetter() {
       useClass: AuthInterceptor,
       multi: true,
     },
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
   ],
   bootstrap: [AppComponent],
 })

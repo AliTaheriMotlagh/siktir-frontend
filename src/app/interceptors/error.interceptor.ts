@@ -26,11 +26,8 @@ export class ErrorInterceptor implements HttpInterceptor {
           //Todo : refresh token
           this.authService.RemoveToken();
           return of();
-        } else if (error.status === 406) {
-          this.notificationService.OpenError('only one time can siktir dokme');
-          return of();
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
