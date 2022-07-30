@@ -64,7 +64,11 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
     FingerprintjsProAngularModule.forRoot({
-      loadOptions: { apiKey: 'iiuIAXZValPDjn7qAtXg' },
+      loadOptions: {
+        apiKey: environment.fpApiKey,
+        region: 'eu',
+        endpoint: environment.fpEndpoint,
+      },
     }),
     JwtModule.forRoot({
       config: {
