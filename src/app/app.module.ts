@@ -15,6 +15,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,13 +26,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
-import { AuthInterceptor, ErrorInterceptor } from './interceptors';
+import {
+  AuthInterceptor,
+  ErrorInterceptor,
+  LoaderInterceptor,
+} from './interceptors';
 import { CreateDokmeComponent } from './pages/create-dokme/create-dokme.component';
 import { environment } from 'src/environments/environment';
 import { DurationDatePipe } from './pipes';
 import { UrlPreviewComponent } from './components/url-preview/url-preview.component';
 import { DokmeComponent } from './pages/dokme/dokme.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -49,6 +55,7 @@ export function tokenGetter() {
     UrlPreviewComponent,
     DokmeComponent,
     HeaderComponent,
+    LoaderComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -77,8 +84,14 @@ export function tokenGetter() {
     MatMenuModule,
     MatDividerModule,
     ClipboardModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

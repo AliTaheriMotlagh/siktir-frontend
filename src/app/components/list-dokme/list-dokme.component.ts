@@ -1,19 +1,25 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { interval } from 'rxjs';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { interval, Subject, takeUntil } from 'rxjs';
 import { DokmeDto, MetadataUrlDto, MySiktirsDto } from 'src/app/dto';
 import {
   DokmeService,
   NavigationService,
   SiktirService,
 } from 'src/app/services';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-dokme',
   templateUrl: './list-dokme.component.html',
   styleUrls: ['./list-dokme.component.scss'],
 })
-export class ListDokmeComponent implements OnInit {
+export class ListDokmeComponent implements OnInit, OnDestroy {
   dokmeList: DokmeDto[] = [];
   mySiktirs: MySiktirsDto[] = [];
   isDokmeLoading = false;
@@ -26,6 +32,8 @@ export class ListDokmeComponent implements OnInit {
     }
   }
 
+  private ngUnsubscribe = new Subject<void>();
+
   constructor(
     private dokmeService: DokmeService,
     private siktirService: SiktirService,
@@ -33,18 +41,24 @@ export class ListDokmeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const source = interval(10000);
+    const source = interval(10000).pipe(takeUntil(this.ngUnsubscribe));
     source.subscribe((val) => this.loadData());
     this.loadData();
   }
 
   loadData() {
-    this.dokmeService.GetAllDokme().subscribe((res) => {
-      this.dokmeList = res;
-    });
-    this.siktirService.GetUserSiktir().subscribe((res) => {
-      this.mySiktirs = res;
-    });
+    this.dokmeService
+      .GetAllDokme()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.dokmeList = res;
+      });
+    this.siktirService
+      .GetUserSiktir()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.mySiktirs = res;
+      });
   }
 
   dokmeSiktirHandler(dokmeId: string) {
@@ -91,6 +105,11 @@ export class ListDokmeComponent implements OnInit {
   }
 
   GetAbsoloteUrlOfDokme(dokmeId: string) {
-    return this.navigationService.GetAbsoloteUrlOfDokme(dokmeId)
+    return this.navigationService.GetAbsoloteUrlOfDokme(dokmeId);
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

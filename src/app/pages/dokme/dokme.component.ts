@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import {
   DokmeDto,
   FireSiktirDto,
@@ -17,10 +18,11 @@ import {
   templateUrl: './dokme.component.html',
   styleUrls: ['./dokme.component.scss'],
 })
-export class DokmeComponent implements OnInit {
+export class DokmeComponent implements OnInit, OnDestroy {
   dokmeId = '';
   item!: DokmeDto;
   mySiktirs: MySiktirsDto[] = [];
+  private ngUnsubscribe = new Subject<void>();
   constructor(
     private route: ActivatedRoute,
     private dokmeService: DokmeService,
@@ -29,18 +31,26 @@ export class DokmeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.dokmeId = params['id'];
-      this.loadData();
-    });
+    this.route.params
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((params) => {
+        this.dokmeId = params['id'];
+        this.loadData();
+      });
   }
   loadData() {
-    this.dokmeService.GetDokmeById(this.dokmeId).subscribe((res) => {
-      this.item = res;
-    });
-    this.siktirService.GetUserSiktir().subscribe((res) => {
-      this.mySiktirs = res;
-    });
+    this.dokmeService
+      .GetDokmeById(this.dokmeId)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.item = res;
+      });
+    this.siktirService
+      .GetUserSiktir()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.mySiktirs = res;
+      });
   }
 
   canSiktir(dokmeId: string): boolean {
@@ -52,10 +62,13 @@ export class DokmeComponent implements OnInit {
       dokmeId,
     };
 
-    this.siktirService.FireSiktir(dto).subscribe((res) => {
-      this.item = res;
-      this.mySiktirs.push({ dokmeId: res.id });
-    });
+    this.siktirService
+      .FireSiktir(dto)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.item = res;
+        this.mySiktirs.push({ dokmeId: res.id });
+      });
     this.vibrate();
     this.makeNoise();
   }
@@ -83,5 +96,10 @@ export class DokmeComponent implements OnInit {
       hostname: new URL(data.url).hostname,
       url: data.url,
     };
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

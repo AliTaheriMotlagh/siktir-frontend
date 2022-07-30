@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { DokmeDto, FireSiktirDto, SelectOptionDto } from 'src/app/dto';
-import { NavigationService, SiktirService } from 'src/app/services';
+import { SiktirService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { NavigationService, SiktirService } from 'src/app/services';
 })
 export class HomeComponent implements OnInit {
   updateItem: DokmeDto | null = null;
+  private ngUnsubscribe = new Subject<void>();
   constructor(private siktirService: SiktirService) {}
 
   ngOnInit(): void {}
@@ -18,8 +20,15 @@ export class HomeComponent implements OnInit {
       dokmeId,
     };
 
-    this.siktirService.FireSiktir(dto).subscribe((res) => {
-      this.updateItem = res;
-    });
+    this.siktirService
+      .FireSiktir(dto)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.updateItem = res;
+      });
+  }
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
