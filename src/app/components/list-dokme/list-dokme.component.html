@@ -17,6 +17,20 @@
     <button mat-button [matMenuTriggerFor]="moreMenu">
       <mat-icon>more_horiz</mat-icon>
     </button>
+    <div fxFlex="row" fxLayoutAlign="center center">
+      <button
+        mat-fab
+        color="warn"
+        aria-label="dokme siktir"
+        [matBadge]="item.siktirCount"
+        matBadgeSize="large"
+        matBadgeOverlap="false"
+        (click)="dokmeSiktirHandler(item.id)"
+        [disabled]="canSiktir(item.id)"
+      >
+        <mat-icon> room_service </mat-icon>
+      </button>
+    </div>
     <mat-menu #moreMenu="matMenu">
       <button
         mat-menu-item
