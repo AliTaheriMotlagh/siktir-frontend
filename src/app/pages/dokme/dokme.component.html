@@ -29,9 +29,14 @@
 
 <mat-card class="dokme-card" *ngIf="!item">
   <mat-card-title-group>
-    <mat-card-title>dokme not found</mat-card-title>
+    <mat-card-title>dokme expire</mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p>dokme is expire</p>
+    <p>dokme is expire and you only can go bac to home!</p>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="navigationService.GoToHome()">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>
