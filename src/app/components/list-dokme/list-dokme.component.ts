@@ -41,7 +41,7 @@ export class ListDokmeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const source = interval(10000).pipe(takeUntil(this.ngUnsubscribe));
+    const source = interval(30000).pipe(takeUntil(this.ngUnsubscribe));
     source.subscribe((val) => this.loadData());
     this.loadData();
   }

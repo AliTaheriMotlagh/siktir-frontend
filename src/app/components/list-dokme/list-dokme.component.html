@@ -4,19 +4,6 @@
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-content fxLayout="column">
-    <button mat-stroked-button [disabled]="canSiktir(item.id)" disableRipple>
-      {{ item.siktirCount }}
-    </button>
-    <p>{{ item.description }}</p>
-    <app-url-preview [data]="getUrlMetadata(item)"></app-url-preview>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="goToDokme(item.id)">
-      <mat-icon>open_in_new</mat-icon>
-    </button>
-    <button mat-button [matMenuTriggerFor]="moreMenu">
-      <mat-icon>more_horiz</mat-icon>
-    </button>
     <div fxFlex="row" fxLayoutAlign="center center">
       <button
         mat-fab
@@ -31,6 +18,16 @@
         <mat-icon> room_service </mat-icon>
       </button>
     </div>
+    <p>{{ item.description }}</p>
+    <app-url-preview [data]="getUrlMetadata(item)"></app-url-preview>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="goToDokme(item.id)">
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="moreMenu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
     <mat-menu #moreMenu="matMenu">
       <button
         mat-menu-item
