@@ -1,6 +1,6 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,6 +80,7 @@ export function tokenGetter() {
     }),
     FlexLayoutModule,
     ReactiveFormsModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
@@ -90,6 +92,7 @@ export function tokenGetter() {
     MatDividerModule,
     ClipboardModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   providers: [
     {

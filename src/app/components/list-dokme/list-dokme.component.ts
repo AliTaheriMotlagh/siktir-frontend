@@ -6,8 +6,15 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { interval, Subject, takeUntil } from 'rxjs';
-import { DokmeDto, MetadataUrlDto, MySiktirsDto } from 'src/app/dto';
+import { BehaviorSubject, interval, merge, Subject, takeUntil } from 'rxjs';
+import {
+  DokmeDto,
+  FilterDto,
+  FilterType,
+  FilterTypeEnum,
+  MetadataUrlDto,
+  MySiktirsDto,
+} from 'src/app/dto';
 import {
   DokmeService,
   NavigationService,
@@ -23,6 +30,11 @@ export class ListDokmeComponent implements OnInit, OnDestroy {
   dokmeList: DokmeDto[] = [];
   mySiktirs: MySiktirsDto[] = [];
   isDokmeLoading = false;
+  filter: FilterDto = {
+    type: FilterTypeEnum.lastSiktir,
+  };
+  filterType = new FilterType();
+  myData: any;
   @Output() DokmeSiktirHandler = new EventEmitter();
   @Input() set UpdateItem(v: DokmeDto | null) {
     if (v) {
@@ -41,24 +53,30 @@ export class ListDokmeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const source = interval(30000).pipe(takeUntil(this.ngUnsubscribe));
-    source.subscribe((val) => this.loadData());
     this.loadData();
   }
 
   loadData() {
-    this.dokmeService
-      .GetAllDokme()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((res) => {
-        this.dokmeList = res;
-      });
+    this.getDokmes();
     this.siktirService
       .GetUserSiktir()
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((res) => {
         this.mySiktirs = res;
       });
+  }
+  getDokmes() {
+    this.dokmeService
+      .GetAllDokme(this.filter)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((res) => {
+        this.dokmeList = res;
+      });
+  }
+
+  filterChange(filterType: FilterTypeEnum) {
+    this.filter.type = filterType;
+    this.getDokmes();
   }
 
   dokmeSiktirHandler(dokmeId: string) {

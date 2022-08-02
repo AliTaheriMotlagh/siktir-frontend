@@ -27,3 +27,4 @@ export interface MetadataUrlDto {
   img: string;
   icon: string;
 }
+

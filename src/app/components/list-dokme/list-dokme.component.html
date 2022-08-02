@@ -1,3 +1,15 @@
+<mat-card class="filter-card">
+  <mat-card-content fxFlex="row" fxLayoutAlign="start center">
+    <mat-form-field >
+      <mat-label>Filter</mat-label>
+      <mat-select (valueChange)="filterChange($event)">
+        <mat-option *ngFor="let type of filterType.asList" [value]="type.value">
+          {{ type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
 <mat-card class="dokme-card" *ngFor="let item of dokmeList">
   <mat-card-title-group>
     <mat-card-title>{{ item.title }}</mat-card-title>

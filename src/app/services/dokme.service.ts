@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreateDokmeDto, DokmeDto } from '../dto';
+import { CreateDokmeDto, DokmeDto, FilterDto } from '../dto';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -17,8 +17,10 @@ export class DokmeService {
     );
   }
 
-  GetAllDokme() {
-    return this.api.get<DokmeDto[]>(`${environment.apiUrl}/api/dokmes/all`);
+  GetAllDokme(filter: FilterDto) {
+    return this.api.post<DokmeDto[]>(
+      `${environment.apiUrl}/api/dokmes/all`,filter
+    );
   }
 
   GetDokmeById(id: string) {
