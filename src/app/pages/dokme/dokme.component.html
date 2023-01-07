@@ -1,6 +1,6 @@
-<app-header></app-header>
 
-<mat-card class="dokme-card" *ngIf="item">
+
+<mat-card appearance="outlined" class="dokme-card" *ngIf="item">
   <mat-card-title-group>
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
@@ -27,7 +27,7 @@
   </mat-card-actions>
 </mat-card>
 
-<mat-card class="dokme-card" *ngIf="!item">
+<mat-card appearance="outlined" class="dokme-card" *ngIf="!item">
   <mat-card-title-group>
     <mat-card-title>dokme expire</mat-card-title>
   </mat-card-title-group>
