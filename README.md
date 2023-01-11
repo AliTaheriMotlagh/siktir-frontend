@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8b582231-a669-4b5d-b95a-f091340faa67/deploy-status)](https://app.netlify.com/sites/chimerical-capybara-2fbc1f/deploys)
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
