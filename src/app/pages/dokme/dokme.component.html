@@ -1,12 +1,12 @@
-
-
 <mat-card appearance="outlined" class="dokme-card" *ngIf="item">
   <mat-card-title-group>
     <mat-card-title>{{ item.title }}</mat-card-title>
     <mat-card-subtitle>{{ item.createdAt | durationDate }}</mat-card-subtitle>
+    <mat-card-title>
+      {{ item.description }}
+    </mat-card-title>
   </mat-card-title-group>
   <mat-card-content>
-    <p>{{ item.description }}</p>
     <app-url-preview [data]="getUrlMetadata(item)"></app-url-preview>
   </mat-card-content>
   <mat-card-actions>
