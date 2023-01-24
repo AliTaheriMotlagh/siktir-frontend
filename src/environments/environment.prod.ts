@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://siktir-backend.onrender.com',
+  apiUrl: '',
   fpApiKey: 'iiuIAXZValPDjn7qAtXg',
   fpEndpoint: 'https://fp.siktir.fun',
 };
