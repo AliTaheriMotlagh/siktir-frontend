@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { FingerprintjsProAngularService } from '@fingerprintjs/fingerprintjs-pro-angular';
-import { BehaviorSubject, map, ReplaySubject, tap } from 'rxjs';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthDto, TokenDto } from '../dto';
 import { ApiService } from './api.service';
@@ -14,17 +14,16 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   access_token = '';
   isLoggedIn = false;
-
-  constructor(
-    private api: ApiService,
-    private fingerprintjsProAngularService: FingerprintjsProAngularService
-  ) {
+  fpPromise: Promise<any>;
+  constructor(private api: ApiService) {
     this.loadUserInfo();
+    this.fpPromise = FingerprintJS.load();
   }
 
   async GetFingerprint() {
-    const data = await this.fingerprintjsProAngularService.getVisitorData();
-    return data.visitorId;
+    const fp = await this.fpPromise;
+    const result = await fp.get();
+    return result.visitorId;
   }
 
   Register(dto: AuthDto) {

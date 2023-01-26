@@ -26,7 +26,6 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { FingerprintjsProAngularModule } from '@fingerprintjs/fingerprintjs-pro-angular';
 import {
   AuthInterceptor,
   ErrorInterceptor,
@@ -64,13 +63,6 @@ export function tokenGetter() {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FingerprintjsProAngularModule.forRoot({
-      loadOptions: {
-        apiKey: environment.fpApiKey,
-        region: 'eu',
-        endpoint: environment.fpEndpoint,
-      },
-    }),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
