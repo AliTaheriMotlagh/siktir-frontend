@@ -1,9 +1,16 @@
-<mat-card appearance="outlined">
-    <mat-card-title><img src="/assets/images/logo-name.png" alt="logo"></mat-card-title>
-    <mat-card-content>
-        <p>by clicking this button you are agree with our term of service! </p>
-        <button mat-raised-button color="primary" (click)="getMyData()">
-            I Am Trusted To This Site
-        </button>
+<section fxFill fxLayoutGap>
+  <mat-card appearance="outlined">
+    <mat-card-title></mat-card-title>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-around center" >
+        <br />
+      <img src="/assets/images/logo-name.png" alt="logo" mat-card-lg-image />
+      <p>by clicking this button we unique your device for fairly siktir!</p>
+      <button mat-raised-button color="primary" (click)="getMyData()">
+        I Am Trusted To This Site
+      </button>
     </mat-card-content>
-</mat-card>
+    <mat-card-subtitle
+      >we are <a href="https://github.com/AliTaheriMotlagh/siktir-frontend" target="_blank">open</a> source</mat-card-subtitle
+    >
+  </mat-card>
+</section>
