@@ -144,14 +144,14 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@^15.0.0":
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-15.0.0.tgz#584bc424eff1856db3f517b22a0f1cb81cb854dc"
-  integrity sha512-a4AUGfd1iNEGR5A9jmwzEfdRDpOh9KWypFqo85ivC3/KDW4+Z5AGxZpzwqAsRz2WQVdK+8biaz83VBQTMC5IOw==
+"@angular/cdk@^18.1.0":
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-18.1.0.tgz#31333e00094a040df78c680c1241a4d799a6fa97"
+  integrity sha512-GWUyJQ7KdOS0WwQPp7UKnRd7lUKvOrMvktqNWfSxBy/VEdyEeKlXfghk6GQ4u1RXFZ2RU0m1KhX8rY9srYJOwA==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
-    parse5 "^5.0.0"
+    parse5 "^7.1.2"
 
 "@angular/cli@~16.2.14":
   version "16.2.14"
@@ -2761,6 +2761,13 @@
     "@material/feature-targeting" "15.0.0-canary.ecfee946f.0"
     "@material/theme" "15.0.0-canary.ecfee946f.0"
     tslib "^2.1.0"
+
+"@ngbracket/ngx-layout@^17.0.1":
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/@ngbracket/ngx-layout/-/ngx-layout-17.0.1.tgz#acbc418e4f7ee4fec33d68fbee341c2787a31a34"
+  integrity sha512-HHPQXEIDpdb0FuJPWuy3noS7n49F6vr8e0kJ6lusmOgjFpRxUQeNua1eXWyPSnzw1QcWIJK6XXxKK4OidOHrPA==
+  dependencies:
+    tslib "^2.5.0"
 
 "@ngtools/webpack@16.2.14":
   version "16.2.14"
@@ -6454,12 +6461,7 @@ parse5@6.0.1:
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
-parse5@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
-  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
-
-parse5@^7.0.0:
+parse5@^7.0.0, parse5@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.1.2.tgz#0736bebbfd77793823240a23b7fc5e010b7f8e32"
   integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
@@ -7625,7 +7627,7 @@ tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
-tslib@^2.0.3:
+tslib@^2.0.3, tslib@^2.5.0:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==

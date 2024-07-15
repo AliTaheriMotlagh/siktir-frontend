@@ -23,6 +23,7 @@
     "@angular/router": "^16.2.12",
     "@auth0/angular-jwt": "^5.0.2",
     "@fingerprintjs/fingerprintjs": "^3.4.0",
+    "@ngbracket/ngx-layout": "^17.0.1",
     "dayjs": "^1.11.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
