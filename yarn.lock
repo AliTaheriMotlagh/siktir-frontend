@@ -1560,29 +1560,6 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.13.tgz#64e8825bf0ce769dac94ee39d92ebe6272020dfc"
   integrity sha512-+BoyIm4I8uJmH/QDIH0fu7MG0AEx9OXEDXnqptXCwKOlOqZiS4iraH1Nr7/ObLMokW3sOCeBNyD68ATcV9b9Ag==
 
-"@fingerprintjs/fingerprintjs-pro-angular@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-angular/-/fingerprintjs-pro-angular-1.0.2.tgz#9c36765452c486e6392c84569f20ed31f7801080"
-  integrity sha512-8i4YSoHi8VsZNotQW0uSHKF4CDffvNM5t+LVrNTMb/1bMLUa9+20ZeoPVTkyZH2AKQZ73NxcXWX49a7VpE9qLQ==
-  dependencies:
-    "@fingerprintjs/fingerprintjs-pro-spa" "0.4.0"
-    tslib "^2.3.0"
-
-"@fingerprintjs/fingerprintjs-pro-spa@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.4.0.tgz#04ff237e3d35e0522339cc8452e872fc28d63a05"
-  integrity sha512-YK5r0W45fgpk/Yihsc4jzMoyytvOjBu8JG6p4B3mAM891d0y6izg1VRy4tqylIYiLQr2GaeFC371/AoeuDMPOQ==
-  dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.6.2"
-    tslib "^2.2.0"
-
-"@fingerprintjs/fingerprintjs-pro@^3.6.2":
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.6.3.tgz#38c74da6222ff789756290dec8246452984340ad"
-  integrity sha512-mfWIG+dKjcNu2/ahOKUwV0KekDkmvcZ5MWwQOiic3QmTzAIqLacYtJfI6B8qKkj3AOsDxM3zNIHMsZXjMhb1XQ==
-  dependencies:
-    tslib "^2.0.1"
-
 "@fingerprintjs/fingerprintjs@^3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.4.0.tgz#0d9d54bd2604a57bc86c8a21cddbf47169e3fd62"
@@ -6781,7 +6758,7 @@ tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0:
+tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
