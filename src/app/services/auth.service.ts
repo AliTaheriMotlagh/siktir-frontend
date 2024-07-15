@@ -48,7 +48,8 @@ export class AuthService {
     if (!this.jwtHelper.isTokenExpired(access_token)) {
       this.isLoggedIn = true;
       localStorage.setItem('access_token', access_token);
-      this.userInfo.next(this.jwtHelper.decodeToken(access_token));
+      const token = this.jwtHelper.decodeToken(access_token);
+      this.userInfo.next({ token });
     }
   }
 
