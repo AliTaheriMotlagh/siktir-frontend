@@ -23,7 +23,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ListDokmeComponent } from './components/list-dokme/list-dokme.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {
@@ -44,66 +44,60 @@ export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    PageNotFoundComponent,
-    ListDokmeComponent,
-    RegisterComponent,
-    CreateDokmeComponent,
-    DurationDatePipe,
-    UrlPreviewComponent,
-    DokmeComponent,
-    HeaderComponent,
-    LoaderComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: [environment.apiUrl],
-        disallowedRoutes: [],
-      },
-    }),
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatBadgeModule,
-    MatMenuModule,
-    MatDividerModule,
-    ClipboardModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-    { provide: ErrorHandler, useClass: ErrorHandlerService },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        ListDokmeComponent,
+        RegisterComponent,
+        CreateDokmeComponent,
+        DurationDatePipe,
+        UrlPreviewComponent,
+        DokmeComponent,
+        HeaderComponent,
+        LoaderComponent,
+    ],
+    bootstrap: [AppComponent], imports: [AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: [environment.apiUrl],
+                disallowedRoutes: [],
+            },
+        }),
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatMenuModule,
+        MatDividerModule,
+        ClipboardModule,
+        MatProgressSpinnerModule,
+        MatSelectModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoaderInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+        { provide: ErrorHandler, useClass: ErrorHandlerService },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
